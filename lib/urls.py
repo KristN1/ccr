@@ -7,7 +7,7 @@ def add(url: str):
         urls = json.load(f)
     urls.append(url)
     with open(urlsfile, "w") as f:
-        json.dump(urls, f)
+        json.dump(urls, f, indent=4)
 
 def remove(url: str):
     with open(urlsfile, "r") as f:
@@ -17,7 +17,7 @@ def remove(url: str):
     except ValueError:
         pass
     with open(urlsfile, "w") as f:
-        json.dump(urls, f)
+        json.dump(urls, f, indent=4)
 
 def _list():
     with open(urlsfile, "r") as f:
