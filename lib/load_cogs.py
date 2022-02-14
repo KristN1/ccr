@@ -2,7 +2,6 @@ import discord
 from discord import message
 from conf._config import Config
 
-import commands.admin.deploy as deploy
 import commands.admin.ping as ping
 import commands.admin.ticket_setup as ticket_setup
 import commands.admin.wl as wl
@@ -16,7 +15,6 @@ import events.basic.message as message
 
 
 def run(client: discord.Client, config: Config):
-    deploy.setup(client, config)
     ping.setup(client, config)
     ticket_setup.setup(client, config)
     wl.setup(client, config)
