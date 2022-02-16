@@ -18,8 +18,3 @@ def remove(url: str):
         pass
     with open(urlsfile, "w") as f:
         json.dump(urls, f, indent=4)
-
-def _list():
-    with open(urlsfile, "r") as f:
-        urls = json.load(f)
-    return urls

@@ -14,7 +14,7 @@ import events.basic.ready as ready
 import events.basic.message as message
 
 
-def run(client: discord.Client, config: Config):
+def load(client: discord.Client, config: Config):
     ping.setup(client, config)
     ticket_setup.setup(client, config)
     wl.setup(client, config)

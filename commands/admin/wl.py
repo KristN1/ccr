@@ -1,9 +1,9 @@
 from discord.ext import commands
 
 from conf._config import Config
-import lib.urls
+import lib.urls, lib.urls
 
-class Ping(commands.Cog):
+class Whitelist(commands.Cog):
 
     def __init__(self, client, config: Config):
         self.client = client
@@ -15,19 +15,23 @@ class Ping(commands.Cog):
             if action.lower() == "add":
                 if argument is not None:
                     lib.urls.add(argument.lower())
+                    self.reload_config()
                     await ctx.send("Added to whitelist")
+
                 else:
                     await ctx.send("Please specify a url")
 
             elif action.lower() == "remove":
                 if argument is not None:
                     lib.urls.remove(argument.lower())
+                    self.reload_config()
+
                     await ctx.send("Removed from whitelist")
                 else:
                     await ctx.send("Please specify a url")
             
             elif action == "list":
-                urls = lib.urls._list()
+                urls = self.config.whitelisted_urls
 
                 urls_str = "```"
                 for url in urls:
@@ -39,6 +43,10 @@ class Ping(commands.Cog):
                 await ctx.send("Invalid action, use `add` or `remove`")
         else:
             raise commands.errors.MissingPermissions("You are not an admin")
+    
+    def reload_config(self):
+        self.client.remove_cog("Whitelist")
+        self.client.add_cog(Whitelist(self.client, Config()))
 
 def setup(client, config):
-    client.add_cog(Ping(client, config))
+    client.add_cog(Whitelist(client, config))
