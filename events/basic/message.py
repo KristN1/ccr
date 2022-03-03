@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from lib import embed
 
-class Ready(commands.Cog):
+class Message(commands.Cog):
     def __init__(self, client, config):
         self.client = client
         self.config = config
@@ -41,8 +41,8 @@ class Ready(commands.Cog):
                                     await message.delete()
 
                                 link_logs_channel = self.client.get_channel(self.config.link_logs_channel)
-                                msg = await link_logs_channel.send(embed=embed.BaseEmbed(self.client, "Link detected", f"Author - {message.author.mention}\nID - {message.author.id}\nChannel - {message.channel.mention}\n\nURL - https://{domain}", 0xff8040, None, message.author.name, message.author.avatar_url).generate())
+                                msg = await link_logs_channel.send(embed=embed.BaseEmbed(self.client, "Link detected", f"Author - {message.author.mention}\nID - {message.author.id}\nChannel - {message.channel.mention}\n\nURL - https://{domain}", 0xff8040, None, message.author.name, message.author.avatar.url).generate())
                                 break
         
 def setup(client, config):
-    client.add_cog(Ready(client, config))
+    client.add_cog(Message(client, config))

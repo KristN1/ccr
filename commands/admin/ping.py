@@ -14,7 +14,7 @@ class Ping(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         bot_name = self.client.user.name
-        bot_pfp = self.client.user.avatar_url
+        bot_pfp = self.client.user.avatar.url
 
         embed=discord.Embed(color=0x08ccfd)
         embed.add_field(name="Pong", value=f"Latency is `{round(self.client.latency * 1000)}` ms", inline=False)
