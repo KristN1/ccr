@@ -1,9 +1,9 @@
+import datetime
 import asyncio
 from discord.ext import commands
 
 from conf._config import Config
 from lib.embed import BaseEmbed
-from conf import _ticket_setup as ticket_setup
 
 class TicketSetup(commands.Cog):
 
@@ -21,8 +21,8 @@ class TicketSetup(commands.Cog):
                                         title = "👋 __Welcome!__",
                                         description = f"In order to get verified and receive the correct roles we require you to open a ticket.\nReact with {self.config.tickets.reaction_message.emoji} to open a ticket please!",
                                         color = 0x3584e4,
-                                        timestamp = None,
-                                        footer_text = None,
+                                        timestamp = datetime.datetime.now(),
+                                        footer_text = self.client.user.name,
                                         footer_icon = None).generate())
                 
                 
@@ -36,11 +36,11 @@ class TicketSetup(commands.Cog):
                 message = await ctx.send(embed=BaseEmbed(
                                         client = self.client,
                                         title = "Open a ticket",
-                                        description = self.config.tickets.entry_messages.help,
+                                        description = "Hello,\nHow can we help you? Our staff team will be ready for you when you open a ticket!\n⚠️ Please read our FAQ and <#623213850644316210> before opening a ticket, you might get an answer there.\n\nValid reasons to open a ticket:\n<:reddot:892477402020712449> Claim a role\n<:reddot:892477402020712449> Get added to <#911340112858742794>\n<:reddot:892477402020712449> Partnerships & sponsorships\n<:reddot:892477402020712449> Report a bug or a member\n<:reddot:892477402020712449> Unanswered questions",
                                         color = 0x57e389,
-                                        timestamp = None,
-                                        footer_text = None,
-                                        footer_icon = None).generate())
+                                        timestamp = datetime.datetime.now(),
+                                        footer_text = self.client.user.name,
+                                        footer_icon = self.client.user.avatar.url).generate())
                 
                 
                 await message.add_reaction(self.config.tickets.reaction_message.emoji)
