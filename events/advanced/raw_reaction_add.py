@@ -23,12 +23,14 @@ class RawReactionAdd(commands.Cog):
     async def create_ticket_channel(self, guild: discord.Guild, payload: RawReactionActionEvent, channel_name: str):
         staff_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.staff)
         ping_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.ping)
+        muted_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.muted)
 
         create_perms = {
             guild.default_role: discord.PermissionOverwrite(read_messages=False),
             guild.me: discord.PermissionOverwrite(read_messages=True),
             payload.member: discord.PermissionOverwrite(read_messages=True),
-            staff_role: discord.PermissionOverwrite(read_messages=True)
+            staff_role: discord.PermissionOverwrite(read_messages=True),
+            muted_role: discord.PermissionOverwrite(send_messages=True)
             }
 
         category = discord.utils.get(self.client.get_guild(guild.id).categories, id=self.config.tickets.new_tickets.category)

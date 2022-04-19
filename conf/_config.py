@@ -49,6 +49,7 @@ class Config():
                 self.ping = config["ping"]
                 self.staff = config["staff"]
                 self.new = config["new"]
+                self.muted = config["muted"]
 
         class CreateTickets():
             def __init__(self, config):
