@@ -40,7 +40,7 @@ class TicketSetup(commands.Cog):
                                         color = 0x57e389,
                                         timestamp = datetime.datetime.now(),
                                         footer_text = self.client.user.name,
-                                        footer_icon = self.client.user.avatar.url).generate())
+                                        footer_icon = self.client.user.avatar_url).generate())
                 
                 
                 await message.add_reaction(self.config.tickets.reaction_message.emoji)

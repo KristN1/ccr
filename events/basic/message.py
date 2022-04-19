@@ -41,7 +41,7 @@ class Message(commands.Cog):
                                     await message.delete()
 
                                 link_logs_channel = self.client.get_channel(self.config.link_logs_channel)
-                                msg = await link_logs_channel.send(embed=embed.BaseEmbed(self.client, "Link detected", f"Author - {message.author.mention}\nID - {message.author.id}\nChannel - {message.channel.mention}\n\nURL - https://{domain}", 0xff8040, None, message.author.name, message.author.avatar.url).generate())
+                                msg = await link_logs_channel.send(embed=embed.BaseEmbed(self.client, "Link detected", f"Author - {message.author.mention}\nID - {message.author.id}\nChannel - {message.channel.mention}\n\nURL - https://{domain}", 0xff8040, None, message.author.name, message.author.avatar_url).generate())
                                 break
         
 def setup(client, config):

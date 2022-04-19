@@ -21,7 +21,7 @@ class BaseEmbed():
         self.footer_text = footer_text
 
         if footer_icon == None:
-            footer_icon = client.user.avatar.url
+            footer_icon = client.user.avatar_url
         self.footer_icon = footer_icon
 
     def generate(self):
