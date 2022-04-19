@@ -5,7 +5,6 @@ from conf._config import Config
 import commands.admin.ping as ping
 import commands.admin.ticket_setup as ticket_setup
 import commands.admin.wl as wl
-import commands.fun.topic as topic
 
 import events.advanced.raw_reaction_add as reaction_add
 import events.basic.member_join as member_join
@@ -18,7 +17,6 @@ def load(client: discord.Client, config: Config):
     ping.setup(client, config)
     ticket_setup.setup(client, config)
     wl.setup(client, config)
-    topic.setup(client, config)
 
     reaction_add.setup(client, config)
     member_join.setup(client, config)
