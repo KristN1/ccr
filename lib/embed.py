@@ -3,7 +3,7 @@ import datetime
 
 
 class BaseEmbed():
-    def __init__(self, client: discord.Client, title, description, color, timestamp, footer_text, footer_icon):
+    def __init__(self, client: discord.Client, title, description, color=None, timestamp=None, footer_text=None, footer_icon=None):
         self.title = title
         self.description = description
         self.color = color

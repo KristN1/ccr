@@ -19,6 +19,7 @@ class Config():
         self.admins = self.open_file(general_conf)["admins"]
         self.membercount_channel = self.open_file(general_conf)["membercount_channel"]
         self.link_logs_channel = self.open_file(general_conf)["link_logs_channel"]
+        self.join_leave_channel = self.open_file(general_conf)["join_leave_channel"]
 
         self.tickets = self.Tickets(self.open_file(tickets_conf))
         

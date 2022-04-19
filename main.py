@@ -5,7 +5,7 @@ from lib import cogs
 from conf._config import Config
 
 config = Config()
-intents = discord.Intents().all()
+intents = discord.Intents(messages=True, members=True, guilds=True)
 client = commands.Bot(command_prefix=config.prefix, intents=intents)
 cogs.load(client, config)
 
