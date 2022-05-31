@@ -51,6 +51,7 @@ class Config():
                 self.staff = config["staff"]
                 self.new = config["new"]
                 self.muted = config["muted"]
+                self.bots = config["bots"]
 
         class CreateTickets():
             def __init__(self, config):

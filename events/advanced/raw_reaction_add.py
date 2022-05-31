@@ -24,13 +24,15 @@ class RawReactionAdd(commands.Cog):
         staff_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.staff)
         ping_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.ping)
         muted_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.muted)
+        bots_role = discord.utils.get(guild.roles, id=self.config.tickets.roles.bots)
 
         create_perms = {
             guild.default_role: discord.PermissionOverwrite(read_messages=False),
             guild.me: discord.PermissionOverwrite(read_messages=True),
             payload.member: discord.PermissionOverwrite(read_messages=True),
             staff_role: discord.PermissionOverwrite(read_messages=True),
-            muted_role: discord.PermissionOverwrite(send_messages=True)
+            muted_role: discord.PermissionOverwrite(send_messages=True),
+            bots_role: discord.PermissionOverwrite(read_messages=True)
             }
 
         category = discord.utils.get(self.client.get_guild(guild.id).categories, id=self.config.tickets.new_tickets.category)
@@ -48,7 +50,7 @@ class RawReactionAdd(commands.Cog):
             A staffmember will be here shortly!
 
             <a:animated_dirt:811198385276715018> - What is your Minecraft name?
-            <a:cube_shiny:811198292481802250> - Do you play on CubeCraft Bedrock, Java or neither?
+            <a:cube_shiny:811198292481802250> - Do you play CUbeCraft bedrock, java, both or neither?
             <a:levelup:811198009014485023> - What is your CubeCraft level?
             <:takemymoney:811197908422492190> - Which rank do you own? (Java exclusive)
             <:leaderboard:811197955885236253> - Are you on any leaderboards? How many?

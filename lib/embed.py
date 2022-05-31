@@ -13,8 +13,8 @@ class BaseEmbed():
         self.color = color
 
         if timestamp == None:
-            timestamp = datetime.datetime.now()
-        self.timestamp = datetime.datetime.now()
+            timestamp = datetime.datetime.utcnow()
+        self.timestamp = datetime.datetime.utcnow()
 
         if footer_text == None:
             footer_text = client.user.name
