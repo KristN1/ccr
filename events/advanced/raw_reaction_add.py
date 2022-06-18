@@ -50,7 +50,7 @@ class RawReactionAdd(commands.Cog):
             A staffmember will be here shortly!
 
             <a:animated_dirt:811198385276715018> - What is your Minecraft name?
-            <a:cube_shiny:811198292481802250> - Do you play CUbeCraft bedrock, java, both or neither?
+            <a:cube_shiny:811198292481802250> - Do you play CubeCraft Bedrock, Java, both or neither?
             <a:levelup:811198009014485023> - What is your CubeCraft level?
             <:takemymoney:811197908422492190> - Which rank do you own? (Java exclusive)
             <:leaderboard:811197955885236253> - Are you on any leaderboards? How many?
