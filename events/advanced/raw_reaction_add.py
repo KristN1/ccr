@@ -31,7 +31,7 @@ class RawReactionAdd(commands.Cog):
             guild.me: discord.PermissionOverwrite(read_messages=True),
             payload.member: discord.PermissionOverwrite(read_messages=True),
             staff_role: discord.PermissionOverwrite(read_messages=True),
-            muted_role: discord.PermissionOverwrite(send_messages=True),
+            muted_role: discord.PermissionOverwrite(send_messages=True, read_messages=True),
             bots_role: discord.PermissionOverwrite(read_messages=True)
             }
 
