@@ -37,8 +37,10 @@ class RawReactionAdd(commands.Cog):
 
         category = discord.utils.get(self.client.get_guild(guild.id).categories, id=self.config.tickets.new_tickets.category)
         ticket_channel = await guild.create_text_channel(channel_name, overwrites=create_perms, category=category)
-        ping = await ticket_channel.send(f"{payload.member.mention} {ping_role.mention}")
-        await ping.delete()
+        await ticket_channel.edit(topic=payload.member.id)
+
+        #ping = await ticket_channel.send(f"{payload.member.mention} {ping_role.mention}")
+        #await ping.delete()
 
         new_role = guild.get_role(self.config.tickets.roles.new)
         if new_role in payload.member.roles:
@@ -87,7 +89,7 @@ class RawReactionAdd(commands.Cog):
             if str(payload.emoji) == self.config.tickets.reaction_message.emoji:
                 if reaction_channel.id in self.config.tickets.reaction_message.channel_ids:
                     if reaction_message.id in self.config.tickets.reaction_message.message_ids:
-                        if await self.has_ticket(guild, f"🎫-{payload.member.name.lower()}") == False:
+                        if await self.has_ticket(guild, payload.member.id) == False:
                             await self.create_ticket(payload, reaction_message, guild)
                         else:
                             await reaction_message.remove_reaction(payload.emoji, payload.member)
@@ -102,9 +104,10 @@ class RawReactionAdd(commands.Cog):
                             if staffrole in payload.member.roles:
                                 await self.delete_ticket(reaction_message, reaction_channel, payload)
     
-    async def has_ticket(self, guild: discord.Guild, channel_name: str):
-        for channel in guild.channels:
-            if channel.name == channel_name:
+    async def has_ticket(self, guild: discord.Guild, member_id: int):
+        category = discord.utils.get(self.client.get_guild(guild.id).categories, id=self.config.tickets.new_tickets.category)
+        for channel in category.channels:
+            if str(channel.topic) == str(member_id):
                 return True
 
         return False
