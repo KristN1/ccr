@@ -39,8 +39,8 @@ class RawReactionAdd(commands.Cog):
         ticket_channel = await guild.create_text_channel(channel_name, overwrites=create_perms, category=category)
         await ticket_channel.edit(topic=payload.member.id)
 
-        #ping = await ticket_channel.send(f"{payload.member.mention} {ping_role.mention}")
-        #await ping.delete()
+        ping = await ticket_channel.send(f"{payload.member.mention} {ping_role.mention}")
+        await ping.delete()
 
         new_role = guild.get_role(self.config.tickets.roles.new)
         if new_role in payload.member.roles:
