@@ -1,4 +1,4 @@
-name: Publish Docker image
+name: Publish amd64 Docker image
 
 on: [push]
 
@@ -27,5 +27,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64,linux/arm64
+          tags: kristn1/ccr:main
