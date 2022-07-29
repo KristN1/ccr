@@ -119,7 +119,7 @@ class RawReactionAdd(commands.Cog):
     @commands.command(aliases=["reaction"])
     async def verify(self, ctx):
         payload = CustomPayload(ctx)
-        if await self.has_ticket(ctx.guild, f"🎫-{ctx.author.name.lower()}") == False:
+        if await self.has_ticket(ctx.guild, ctx.author.id) == False:
             await self.create_ticket(payload, ctx.message, ctx.guild)
         else:
             await ctx.send("You already have a ticket open.")
