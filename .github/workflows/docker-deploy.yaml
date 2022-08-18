@@ -35,3 +35,4 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: kristn1/ccr:main
+          build-args: ${{ secrets.DISCORD_TOKEN }}

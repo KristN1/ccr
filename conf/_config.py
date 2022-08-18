@@ -2,7 +2,6 @@ import json
 
 conf_dir = "./conf"
 
-tokens_conf = conf_dir + "/tokens.json"
 topics_conf = conf_dir + "/topics.json"
 general_conf = conf_dir + "/general.json"
 tickets_conf = conf_dir + "/tickets.json"
@@ -11,8 +10,6 @@ urls_conf = conf_dir + "/urls.json"
 
 class Config():
     def __init__(self):
-        self.tokens = self.Tokens(self.open_file(tokens_conf))
-
         self.topics = self.open_file(topics_conf)
 
         self.prefix = self.open_file(general_conf)["prefix"]
@@ -28,10 +25,6 @@ class Config():
     def open_file(self, filepath: str):
         with open(filepath, "r",) as f:
             return json.load(f)
-
-    class Tokens():
-        def __init__(self, tokens):
-            self.discord = tokens["discord"]
 
     class Tickets():
         def __init__(self, config):
