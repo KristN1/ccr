@@ -6,4 +6,4 @@ COPY . /
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "./main.py $DISCORD_TOKEN"]
+CMD ["python", "./main.py", "$DISCORD_TOKEN"]
