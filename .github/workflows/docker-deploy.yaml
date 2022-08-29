@@ -6,9 +6,15 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    env: 
+      DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+
+      - name: Generate token config file
+        run: python config.py
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
