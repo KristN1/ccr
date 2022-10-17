@@ -10,6 +10,7 @@ class Ready(commands.Cog):
         print(f"ID - {self.client.user.id}")
         print(f"Username - {self.client.user.name}")
         print("Is ready")
+        print("pterodactyl_running")
         
 def setup(client, config):
     client.add_cog(Ready(client, config))
